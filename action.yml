@@ -1,5 +1,5 @@
 name: Authorize Org
-description: 'Authorize an org to SFDX and CumulusCI with an SFDX Auth URL'
+description: 'Authorize an org to SFDX and Cumulus with an SFDX Auth URL'
 inputs:
   auth-url:
     description: 'SFDX auth URL'
