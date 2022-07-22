@@ -17,14 +17,14 @@ runs:
       - name: Authenticate to Org
         run: |
           echo '${{ inputs.auth-url }}' > sfdx_auth
-          if [ '${{ inputs.dev-hub }}' == 'true' || '${{ inputs.dev-hub }}' == 'True' ]; then
+          if [ '${{ inputs.dev-hub }}' == 'true' ] || [ '${{ inputs.dev-hub }}' == 'True' ]; then
             DEV_HUB='-d'
           else
             DEV_HUB=''
           fi
           sfdx auth:sfdxurl:store -f sfdx_auth -a '${{ inputs.org-name }}' $DEV_HUB
           rm sfdx_auth
-          if [ '${{ inputs.dev-hub }}' != 'true' && '${{ inputs.dev-hub }}' != 'True' ]; then
+          if [ '${{ inputs.dev-hub }}' != 'true' ] && [ '${{ inputs.dev-hub }}' != 'True' ]; then
             cci org import '${{ inputs.org-name }}' '${{ inputs.org-name }}'
           fi
         shell: bash
