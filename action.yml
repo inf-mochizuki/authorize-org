@@ -11,11 +11,17 @@ inputs:
     description: 'Set org as default Dev Hub'
     required: true
     default: false
-  cumulusci_service_github
+  actor:
+    description: 'github.actor'
+    required: true
+  token:
+    description: 'github.token'
+    required: true
+  
 runs:
     using: "composite"
     env:
-      CUMULUSCI_SERVICE_github: ${{ inputs.cumulusci_service_github }}
+      CUMULUSCI_SERVICE_github: '{"username": "${{ inputs.actor }}", "token": "${{ inputs.token }}", "email": "cci@github.actions" }'
     steps:
       - name: Authenticate to Org
         run: |
